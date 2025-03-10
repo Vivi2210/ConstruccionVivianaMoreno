@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Person {
     
-    private long personId;
+    private long PersonId;
     private String name;
-    private String document;
-    private String phone;
+    private String role;
+    private int age;
     
 }

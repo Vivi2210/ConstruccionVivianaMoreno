@@ -8,18 +8,15 @@ import lombok.NoArgsConstructor;
 @Setter
 @NoArgsConstructor
 
-public class Pet extends User {
+public class Pet {
     private long petId;
     private String name;
+    private long ownerId;
     private String species;
-    private String breed;
-    private String age;
+    private int age;
     private String color;
-    private String weight;
-    private String allergies;
-    private String medicalHistory;
-    private String notes;
-    
-
-    
+    private String race;
+    private String size;
+    private double weight;
+        
 }
