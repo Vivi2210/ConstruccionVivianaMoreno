@@ -17,6 +17,10 @@ public interface UserPort {
     public boolean existUserName(String username);
     public User findByUsername(Person person);
 
+    public User findById(long userId);
+
+    public User findByUserName(String username);
+
     
 
     

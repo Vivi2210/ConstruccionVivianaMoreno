@@ -12,5 +12,9 @@ public interface PetPort {
     public void savePet(Pet pet);
     public Pet findByPetId( long PetId);
     public List<Pet> findByOwnerId(long ownerId);
+
+    public void deletePet(long petId);
+
+    public void updatePet(Pet pet);
     
 }
