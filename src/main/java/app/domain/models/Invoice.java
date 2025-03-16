@@ -13,26 +13,44 @@ import lombok.NoArgsConstructor;
 public class Invoice {
     
     private int invoiceId;
-    private int petId;
-    private long ownerId;
+    private long petId;
+    private long ownerDocument;
     private String productName;
     private double price;
     private int amount;
     private Date invoiceDate;
+    private long medicalOrderId;
 
-    public Object getProductName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int getInvoiceId() {
+        return invoiceId;
     }
 
-    public int getPrice() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public long getPetId() {
+        return petId;
+    }
+
+    public long getOwnerDocument() {
+        return ownerDocument;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public int getAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return amount;
     }
 
-    public void setInvoiceDate(Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Date getInvoiceDate() {
+        return invoiceDate;
     }
+
+    public long getMedicalOrderId() {
+        return medicalOrderId;
+    }
+
 }

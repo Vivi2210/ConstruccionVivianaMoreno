@@ -1,17 +1,25 @@
-package app.domain.models;
 
-import lombok.Getter;
-import lombok.Setter;
+package app.adapters.persons.entity;
+
+import app.domain.models.Person;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@NoArgsConstructor
-public class Person {
-    
+@Entity
+@Table(name ="person")
+
+public class PersonEntity {
+    @Id
+    @Column(name="document")
     private long document;
+    @Column (name= "name")
     private String name;
+    @Column(name = "role")
     private String role;
+    @Column(name = "age")
     private int age;
 
     public long getDocument() {
@@ -43,13 +51,6 @@ public class Person {
     }
 
     public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Person(long document, String name, String role, int age) {
-        this.document = document;
-        this.name = name;
-        this.role = role;
         this.age = age;
     }
     

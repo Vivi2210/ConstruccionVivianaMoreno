@@ -1,17 +1,13 @@
 
 package app.domain.services;
 
-import app.domain.models.Invoice;
-import app.domain.models.Person;
-import app.domain.models.User;
 import app.ports.UserPort;
+import app.domain.models.User;
 import app.ports.PersonPort;
-import app.ports.InvoicePort;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 @Getter
@@ -27,25 +23,24 @@ public class AdminService {
     @Autowired
     private PersonPort personPort;
     
-    @Autowired
-    private InvoicePort invoicePort;
     
-    public void registeruser(User user) throws Exception {
-        if (userPort.existUserName(user.getUsername())) {
+    public void registerUser(User user) throws Exception {
+        if (personPort.existPerson(user.getDocument())) {
             throw new Exception("Nombre de usuario ya en uso");
         }
-        personPort.savePerson(user);
-        userPort.saveUser(user);
-        
-    }
-    public Person findByPersonId(long personId) throws Exception{
-        Person person = personPort.findByPersonId(personId);
-        if (person ==null){
-            throw new Exception("No hay una persona con esa cedula");
+        if (userPort.existUserName(user.getUsername())){
+            throw new Exception("Nombre ya en uso");
         }
-        return person;
+        userPort.saveUser(user);
+        personPort.savePerson(user);
+
     }
-    public List<Invoice> getAllInvoices(){
-        return invoicePort.getAllInvoices();
+    public void registerSeller(String username, String password, long document, int age, String name) throws Exception {
+        User seller = new User(username, password, document, name, "seller", age);
+        registerUser(seller);
+    }
+    public void registerVeterinarian(String username, String password, long document, int age, String name) throws Exception {
+        User veterinarian = new User(username, password, document, name, "veterinarian", age);
+        registerUser(veterinarian);
     }
 }

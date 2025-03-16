@@ -13,10 +13,26 @@ public class User extends Person {
     private String password;
 
     public String getUsername() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return username;
     }
 
-    public Object getPassword() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getPassword() {
+        return password;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public User(String username, String password, long document, String name, String role, int age) {
+        super(document, name, role, age);
+        this.username = username;
+        this.password = password;
+    }
+
+  
 }

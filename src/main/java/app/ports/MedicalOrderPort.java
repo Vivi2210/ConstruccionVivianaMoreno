@@ -15,12 +15,12 @@ public interface MedicalOrderPort {
 
     public void save(MedicalOrder medicalOrder);
 
-    public MedicalOrder findById(long orderId);
-
     public List<MedicalOrder> getAllMedicalOrders();
 
     public List<MedicalOrder> findByPetId(long petId);
+    
+    public void cancelOrder(long orderId);
+    public MedicalOrder findById(long orderId);
 
-    public void update(MedicalOrder medicalOrder);
     
 }

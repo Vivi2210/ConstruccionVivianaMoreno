@@ -7,11 +7,11 @@ public interface PersonPort {
 
     /**
      *
-     * @param personId
+     * @param Document
      * @return
      */
-    public boolean existePerson(long personId);
+    public boolean existPerson(long Document);
     public void savePerson(Person person);
-    public Person findByPersonId(long personId);
+    public Person findByDocument(long Document);
     
 }

@@ -2,6 +2,7 @@ package app.domain.services;
 
 import app.domain.models.MedicalHistory;
 import app.ports.MedicalHistoryPort;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,17 +25,18 @@ public class VeterinarianService {
         medicalHistoryPort.save(medicalHistory);
     }
 
-    public MedicalHistory getMedicalHistoryByPetId(String petId) throws Exception {
-        MedicalHistory history = medicalHistoryPort.findByPetId(petId);
-        if (history == null) {
-            throw new Exception("No se encontró un historial médico para esta mascota.");
+    public List<MedicalHistory> getMedicalHistoryByPetId(String petId) throws Exception {
+        List<MedicalHistory> historyList = medicalHistoryPort.findByPetId(Long.parseLong(petId));
+
+        if (historyList.isEmpty()) {
+        throw new Exception("No se encontró un historial médico para esta mascota.");
         }
-        return history;
-    }
+        return historyList;
+}
+
     public void updateMedicalHistory(MedicalHistory medicalHistory) throws Exception {
         if (medicalHistory == null) {
             throw new Exception("El historial médico no puede ser nulo.");
         }
-        medicalHistoryPort.update(medicalHistory);
     }
 }

@@ -1,22 +1,33 @@
-package app.domain.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+package app.adapters.pets.entity;
 
-@Getter
-@Setter
-@NoArgsConstructor
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-public class Pet {
+@Table(name="pet")
+public class PetEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="pet_id")
     private long petId;
+    @Column(name= "name")
     private String name;
+    @Column(name = "ownerDocument")
     private long ownerDocument;
+    @Column(name = "species")
     private String species;
+    @Column(name = "age")
     private int age;
+    @Column(name = "color")
     private String color;
+    @Column(name = "race")
     private String race;
+    @Column(name = "size")
     private String size;
+    @Column(name = "weight")
     private double weight;
 
     public long getPetId() {
@@ -91,6 +102,5 @@ public class Pet {
         this.weight = weight;
     }
     
-
-
+    
 }

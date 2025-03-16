@@ -11,10 +11,6 @@ import java.util.List;
 public interface PetPort {
     public void savePet(Pet pet);
     public Pet findByPetId( long PetId);
-    public List<Pet> findByOwnerId(long ownerId);
+    public List<Pet> findByOwnerId(long ownerDocument);
 
-    public void deletePet(long petId);
-
-    public void updatePet(Pet pet);
-    
 }

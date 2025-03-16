@@ -14,31 +14,88 @@ import lombok.NoArgsConstructor;
 public class MedicalOrder {
     
     private long medicalOrderId;
-    private String petId;
-    private String ownerId;
+    private long petId;
+    private long ownerId;
     private String petName;
-    private String veterinarianId;
+    private long veterinarianId;
     private String medication;
     private String dosage;
     private Date entryDate;
 
-    public Object getPetId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public MedicalOrder(long medicalOrderId, long petId, long ownerId, String petName, long veterinarianId, String medication, String dosage, Date entryDate) {
+        this.medicalOrderId = medicalOrderId;
+        this.petId = petId;
+        this.ownerId = ownerId;
+        this.petName = petName;
+        this.veterinarianId = veterinarianId;
+        this.medication = medication;
+        this.dosage = dosage;
+        this.entryDate = entryDate;
     }
 
-    public Object getOwnerId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public long getMedicalOrderId() {
+        return medicalOrderId;
     }
 
-    public Object getMedication() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public long getPetId() {
+        return petId;
     }
 
-    public void setEntryDate(Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public long getOwnerId() {
+        return ownerId;
     }
 
-    public void setCancellationOrder(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getPetName() {
+        return petName;
     }
+
+    public long getVeterinarianId() {
+        return veterinarianId;
+    }
+
+    public String getMedication() {
+        return medication;
+    }
+
+    public String getDosage() {
+        return dosage;
+    }
+
+    public Date getEntryDate() {
+        return entryDate;
+    }
+
+    public void setMedicalOrderId(long medicalOrderId) {
+        this.medicalOrderId = medicalOrderId;
+    }
+
+    public void setPetId(long petId) {
+        this.petId = petId;
+    }
+
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public void setPetName(String petName) {
+        this.petName = petName;
+    }
+
+    public void setVeterinarianId(long veterinarianId) {
+        this.veterinarianId = veterinarianId;
+    }
+
+    public void setMedication(String medication) {
+        this.medication = medication;
+    }
+
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
+    }
+
+    public void setEntryDate(Date entryDate) {
+        this.entryDate = entryDate;
+    }
+
+  
 }

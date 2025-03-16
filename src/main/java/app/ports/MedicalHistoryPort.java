@@ -5,7 +5,6 @@
 package app.ports;
 
 import app.domain.models.MedicalHistory;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,16 +15,9 @@ public interface MedicalHistoryPort {
 
     public void save(MedicalHistory medicalHistory);
 
-    public MedicalHistory findByDate(long petId, Date date);
-
     public List<MedicalHistory> findByPetId(long petId);
-
-    public void update(MedicalHistory medicalHistory);
-
-    public MedicalHistory findById(long historyId);
 
     public void delete(long historyId);
 
-    public MedicalHistory findByPetId(String petId);
     
 }

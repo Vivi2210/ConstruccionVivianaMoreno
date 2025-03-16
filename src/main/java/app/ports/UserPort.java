@@ -15,7 +15,6 @@ public interface UserPort {
       
     public void saveUser(User user);
     public boolean existUserName(String username);
-    public User findByUsername(Person person);
 
     public User findById(long userId);
 

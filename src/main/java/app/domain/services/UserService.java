@@ -24,22 +24,7 @@ public class UserService {
         userPort.saveUser(user);
     }
 
-    public User findUserById(long userId) throws Exception {
-        User user = userPort.findById(userId);
-        if (user == null) {
-            throw new Exception("No se encontró un usuario con ese ID.");
-        }
-        return user;
-    }
-
-    public User findUserByUsername(String username) throws Exception {
-        User user = userPort.findByUserName(username);
-        if (user == null) {
-            throw new Exception("No se encontró un usuario con ese nombre de usuario.");
-        }
-        return user;
-    }
-
+  
     public User login(String username, String password) throws Exception {
         User user = userPort.findByUserName(username);
         if (user == null || !user.getPassword().equals(password)) {

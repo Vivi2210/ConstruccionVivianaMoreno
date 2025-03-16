@@ -6,28 +6,14 @@ package app.ports;
 
 import app.domain.models.Invoice;
 import java.util.List;
-import app.domain.models.Person;
-import app.domain.models.User;
-import app.domain.models.Pet;
-/**
- *
- * @author Viviana
- */
+
+
 public interface InvoicePort {
 
-    public List<Invoice> getAllInvoices();
-
-    public void save(Invoice invoice);
-
-    public Invoice findById(int invoiceId);
-
-    public List<Invoice> findByOwnerId(long ownerId);
-
-    public List<Invoice> findByPetId(long petId);
-
-    public List<Invoice> findByMedicalOrderId(long medicalOrderId);
-
-    public void delete(int invoiceId);
+    public void saveInvoice(Invoice invoice);
+    public findById(long invoiceId);
+    List<Invoice> findByOwnerId(long ownerDocument);
+    
 
     
     
