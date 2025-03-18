@@ -2,11 +2,11 @@ package app.domain.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.NoArgsConstructor;
+
 
 @Getter
 @Setter
-@NoArgsConstructor
+
 public class Person {
     
     private long document;
@@ -52,6 +52,8 @@ public class Person {
         this.role = role;
         this.age = age;
     }
+    
+    public Person(){}
     
     
 }

@@ -28,6 +28,6 @@ public class SellerService {
                 throw new Exception("No hay una orden medica");
             }
         }
-        invoicePort.save(invoice);
+        invoicePort.saveInvoice(invoice);
     }
 }

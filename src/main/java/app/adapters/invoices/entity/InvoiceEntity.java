@@ -1,25 +1,55 @@
 
-package app.domain.models;
+package app.adapters.invoices.entity;
 
+import app.domain.models.Invoice;
+import jakarta.persistence.Column;
+import jakarta.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.util.Date;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@NoArgsConstructor
 
-public class Invoice {
-    
+@Entity
+@Table (name = "invoice")
+public class InvoiceEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "invoice_id")
     private long invoiceId;
+    @Column (name="pet_id")
     private long petId;
+    @Column (name = "owner_document")
     private long ownerDocument;
+    @Column (name="product_name")
     private String productName;
-    private double price;
-    private int amount;
+    @Column (name = "invoice_date")
     private Date invoiceDate;
+    @Column (name = "medical_order_id")
     private long medicalOrderId;
+    @Column (name="price")
+    private double price;
+    @Column (name="amount")
+    private int amount;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+    
+    
 
     public long getInvoiceId() {
         return invoiceId;
@@ -35,14 +65,6 @@ public class Invoice {
 
     public String getProductName() {
         return productName;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public int getAmount() {
-        return amount;
     }
 
     public Date getInvoiceDate() {
@@ -69,14 +91,6 @@ public class Invoice {
         this.productName = productName;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
     public void setInvoiceDate(Date invoiceDate) {
         this.invoiceDate = invoiceDate;
     }
@@ -84,5 +98,7 @@ public class Invoice {
     public void setMedicalOrderId(long medicalOrderId) {
         this.medicalOrderId = medicalOrderId;
     }
+    
 
+    
 }
