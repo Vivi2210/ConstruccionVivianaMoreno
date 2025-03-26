@@ -16,21 +16,19 @@ public class MedicalOrder {
     private long medicalOrderId;
     private long petId;
     private long ownerId;
-    private String petName;
     private long veterinarianId;
     private String medication;
-    private String dosage;
     private Date entryDate;
+    private boolean canceled;
 
-    public MedicalOrder(long medicalOrderId, long petId, long ownerId, String petName, long veterinarianId, String medication, String dosage, Date entryDate) {
+    public MedicalOrder(long medicalOrderId, long petId, long ownerId, long veterinarianId, String medication, Date entryDate, boolean canceled) {
         this.medicalOrderId = medicalOrderId;
         this.petId = petId;
         this.ownerId = ownerId;
-        this.petName = petName;
         this.veterinarianId = veterinarianId;
         this.medication = medication;
-        this.dosage = dosage;
         this.entryDate = entryDate;
+        this.canceled = canceled;
     }
 
     public long getMedicalOrderId() {
@@ -45,10 +43,6 @@ public class MedicalOrder {
         return ownerId;
     }
 
-    public String getPetName() {
-        return petName;
-    }
-
     public long getVeterinarianId() {
         return veterinarianId;
     }
@@ -57,12 +51,12 @@ public class MedicalOrder {
         return medication;
     }
 
-    public String getDosage() {
-        return dosage;
-    }
-
     public Date getEntryDate() {
         return entryDate;
+    }
+
+    public boolean isCanceled() {
+        return canceled;
     }
 
     public void setMedicalOrderId(long medicalOrderId) {
@@ -77,10 +71,6 @@ public class MedicalOrder {
         this.ownerId = ownerId;
     }
 
-    public void setPetName(String petName) {
-        this.petName = petName;
-    }
-
     public void setVeterinarianId(long veterinarianId) {
         this.veterinarianId = veterinarianId;
     }
@@ -89,13 +79,14 @@ public class MedicalOrder {
         this.medication = medication;
     }
 
-    public void setDosage(String dosage) {
-        this.dosage = dosage;
-    }
-
     public void setEntryDate(Date entryDate) {
         this.entryDate = entryDate;
     }
 
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
+    }
+
+    
   
 }

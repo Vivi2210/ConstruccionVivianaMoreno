@@ -5,6 +5,8 @@ import app.adapters.invoices.entity.InvoiceEntity;
 import app.adapters.invoices.repository.InvoiceRepository;
 import app.domain.models.Invoice;
 import app.ports.InvoicePort;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +24,7 @@ public class InvoiceAdapter implements InvoicePort{
     @Autowired
     private InvoiceRepository invoiceRepository;
     
+    
     @Override 
     public void saveInvoice(Invoice invoice) {
         InvoiceEntity invoiceEntity = invoiceAdapter(invoice);
@@ -29,10 +32,16 @@ public class InvoiceAdapter implements InvoicePort{
         invoice.setInvoiceId(invoiceEntity.getInvoiceId());
     }
 
+
     @Override
-    public Invoice findByOwnerDocument(long document){
-        InvoiceEntity invoiceEntity = invoiceRepository.findByOwnerDocument(document);
-        return invoiceAdapter(invoiceEntity);
+    public  List<Invoice>findByOwnerDocument(long ownerDocument){
+        List<InvoiceEntity> invoiceEntities = invoiceRepository.findByOwnerDocument(ownerDocument);
+        List<Invoice> invoices = new ArrayList<>();
+        
+        for (InvoiceEntity entity : invoiceEntities){
+            invoices.add(toModel(entity));
+        }
+        return invoices;
     }
     
     @Override
@@ -67,6 +76,17 @@ public class InvoiceAdapter implements InvoicePort{
         invoiceEntity.setPrice(invoice.getPrice());
         return invoiceEntity;
     }
-
+    private Invoice toModel(InvoiceEntity entity){
+        Invoice invoice = new Invoice();
+        invoice.setAmount(entity.getAmount());
+        invoice.setInvoiceDate(entity.getInvoiceDate());
+        invoice.setInvoiceId(entity.getInvoiceId());
+        invoice.setMedicalOrderId(entity.getMedicalOrderId());
+        invoice.setOwnerDocument(entity.getOwnerDocument());
+        invoice.setPetId(entity.getPetId());
+        invoice.setProductName(entity.getProductName());
+        invoice.setPrice(entity.getPrice());
+        return invoice;
+    }
 
 }

@@ -14,13 +14,24 @@ import app.domain.models.Person;
 public interface UserPort {
       
     public void saveUser(User user);
+<<<<<<< Updated upstream
     public boolean existUserName(String username);
+=======
+
+    public boolean existUserName(String userName);
+>>>>>>> Stashed changes
 
     public User findById(long userId);
 
+<<<<<<< Updated upstream
     public User findByUserName(String username);
 
     
 
     
+=======
+    public User findByUserName(String userName);
+
+    public User findByPersonId(Person person);
+>>>>>>> Stashed changes
 }

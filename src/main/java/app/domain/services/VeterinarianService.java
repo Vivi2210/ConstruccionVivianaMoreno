@@ -1,7 +1,18 @@
 package app.domain.services;
 
 import app.domain.models.MedicalHistory;
+<<<<<<< Updated upstream
 import app.ports.MedicalHistoryPort;
+=======
+import app.domain.models.MedicalOrder;
+import app.domain.models.Person;
+import app.domain.models.Pet;
+import app.ports.MedicalHistoryPort;
+import app.ports.MedicalOrderPort;
+import app.ports.PersonPort;
+import app.ports.PetPort;
+
+>>>>>>> Stashed changes
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +29,29 @@ public class VeterinarianService {
     @Autowired
     private MedicalHistoryPort medicalHistoryPort;
 
+<<<<<<< Updated upstream
+=======
+    @Autowired
+    private PetPort petPort;
+    @Autowired
+    private PersonPort personPort;
+    @Autowired
+    private MedicalOrderPort medicalOrderPort;
+
+    public void registerPet(Pet pet) throws Exception {
+         if (petPort.existPet(pet.getPetId())) {
+         throw new Exception("Ya existe mascota con  este Id"); 
+        }
+         petPort.savePet(pet);
+    }
+    public void registerOwner(Person owner) throws Exception {
+        if (personPort.existPerson(owner.getDocument())) {
+            throw new Exception("Ya existe persona con este documento");
+        }
+        personPort.savePerson(owner);
+    }
+
+>>>>>>> Stashed changes
     public void createMedicalHistory(MedicalHistory medicalHistory) throws Exception {
         if (medicalHistory == null) {
             throw new Exception("El historial médico no puede ser nulo.");
@@ -29,7 +63,7 @@ public class VeterinarianService {
         List<MedicalHistory> historyList = medicalHistoryPort.findByPetId(Long.parseLong(petId));
 
         if (historyList.isEmpty()) {
-        throw new Exception("No se encontró un historial médico para esta mascota.");
+            throw new Exception("No se encontró un historial médico para esta mascota.");
         }
         return historyList;
 }
@@ -38,5 +72,27 @@ public class VeterinarianService {
         if (medicalHistory == null) {
             throw new Exception("El historial médico no puede ser nulo.");
         }
+        medicalHistoryPort.update(medicalHistory);
+    }
+    public void generateOrder(MedicalOrder medicalOrder)throws Exception{
+        if (medicalOrder== null) {
+            throw new Exception("La orden medica no puede ser vacia");
+        }
+        if (!petPort.existPet(medicalOrder.getPetId())) {
+            throw new Exception("La mascota no está registrada.");
+        }
+        medicalOrderPort.save(medicalOrder);
+    }
+    public void cancelOrder(MedicalOrder medicalOrder)throws Exception{
+        if (medicalOrder== null){
+            throw new Exception("La orden medica no existe");
+        }
+        MedicalOrder existingOrder = medicalOrderPort.findById(medicalOrder.getMedicalOrderId());
+        if (existingOrder == null) {
+        throw new Exception("La orden médica no existe.");
+        }
+        existingOrder.setCanceled(true); 
+        medicalOrderPort.save(existingOrder);
     }
 }
+

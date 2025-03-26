@@ -13,6 +13,12 @@ import lombok.NoArgsConstructor;
 
 public class PersonEntity {
     @Id
+<<<<<<< Updated upstream
+=======
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long personId;
+>>>>>>> Stashed changes
     @Column(name="document")
     private long document;
     @Column (name= "name")
@@ -22,6 +28,10 @@ public class PersonEntity {
     @Column(name = "age")
     private int age;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     public long getDocument() {
         return document;
     }
@@ -53,6 +63,21 @@ public class PersonEntity {
     public void setAge(int age) {
         this.age = age;
     }
+<<<<<<< Updated upstream
     
     
+=======
+
+    public long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(long personId) {
+        this.personId = personId;
+    }
+
+
+
+
+>>>>>>> Stashed changes
 }

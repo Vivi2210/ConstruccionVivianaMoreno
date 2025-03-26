@@ -16,5 +16,7 @@ public interface MedicalHistoryPort {
     public void save(MedicalHistory medicalHistory);
 
     public List<MedicalHistory> findByPetId(long petId);
+    public void update(MedicalHistory medicalHistory);
+    public MedicalHistory findById(long medicalHistoryId);
     
 }

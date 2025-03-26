@@ -28,7 +28,7 @@ public class AdminService {
         if (personPort.existPerson(user.getDocument())) {
             throw new Exception("Nombre de usuario ya en uso");
         }
-        if (userPort.existUserName(user.getUsername())){
+        if (userPort.existUserName(user.getUserName())){
             throw new Exception("Nombre ya en uso");
         }
         userPort.saveUser(user);

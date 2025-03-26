@@ -22,6 +22,14 @@ public class PetAdapter implements PetPort{
     
     @Autowired
     private PetRepository petRepository;
+<<<<<<< Updated upstream
+=======
+    
+    @Override 
+    public boolean existPet(long petId){
+        return petRepository.existsById(petId);
+    }
+>>>>>>> Stashed changes
     @Override
     public void savePet(Pet pet){
         PetEntity petEntity = toEntity(pet);
@@ -31,14 +39,14 @@ public class PetAdapter implements PetPort{
     
     @Override
     public Pet findByPetId(long petId){
-        PetEntity petEntity = petRepository.findById(petId).orElse(null);
+        PetEntity petEntity = petRepository.findByPetId(petId);
         if (petEntity == null){
             return null;
         }
         return toModel(petEntity);
     }
     @Override
-    public List<Pet> findByOwnerId(long ownerDocument) {
+    public List<Pet> findByOwnerDocument(long ownerDocument) {
         List<PetEntity> petEntities =petRepository.findByOwnerDocument(ownerDocument);
         List<Pet> pets =new ArrayList<>();
         
