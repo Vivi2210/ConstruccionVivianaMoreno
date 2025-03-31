@@ -4,12 +4,11 @@ package app.domain.models;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.NoArgsConstructor;
 
 
 @Getter
 @Setter
-@NoArgsConstructor
+
 
 public class MedicalOrder {
     
@@ -21,6 +20,7 @@ public class MedicalOrder {
     private Date entryDate;
     private boolean canceled;
 
+    public MedicalOrder(){}
     public MedicalOrder(long medicalOrderId, long petId, long ownerId, long veterinarianId, String medication, Date entryDate, boolean canceled) {
         this.medicalOrderId = medicalOrderId;
         this.petId = petId;
@@ -86,7 +86,6 @@ public class MedicalOrder {
     public void setCanceled(boolean canceled) {
         this.canceled = canceled;
     }
-
-    
+ 
   
 }

@@ -26,7 +26,7 @@ public class UserEntity {
     
     @JoinColumn(name = "person_id", referencedColumnName ="id")
     @OneToOne
-    private PersonEntity personDocument;
+    private PersonEntity person;
 
     
     @Column(name = "username")
@@ -42,42 +42,43 @@ public class UserEntity {
         return userId;
     }
 
-    public PersonEntity getPersonDocument() {
-        return personDocument;
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public PersonEntity getPerson() {
+        return person;
+    }
+
+    public void setPerson(PersonEntity person) {
+        this.person = person;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public void setPersonDocument(PersonEntity personDocument) {
-        this.personDocument = personDocument;
-    }
-
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void setRole(String role) {
         this.role = role;
     }
-    
+
+  
    
 
 }

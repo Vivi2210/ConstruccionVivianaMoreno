@@ -6,9 +6,13 @@ package app.adapters.medicalHistorys;
 
 import app.adapters.medicalHistorys.entity.MedicalHistoryEntity;
 import app.adapters.medicalHistorys.repository.MedicalHistoryRepository;
+import app.adapters.medicalOrders.entity.MedicalOrderEntity;
 import app.domain.models.MedicalHistory;
+import app.domain.models.MedicalOrder;
 import app.ports.MedicalHistoryPort;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +50,7 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
             existingEntity.setDetailProcedure(medicalHistory.getDateilprocedure());
             existingEntity.setMedicationAllergic(medicalHistory.getMedicationsAllergic());
             existingEntity.setProcedures(medicalHistory.getProcedures());
-            existingEntity.setMedicalOrder(medicalHistory.getMedicalOrder());
+            existingEntity.setMedicalOrder(toEntity(medicalHistory.getMedicalOrder()));
             existingEntity.setVaccinationHistory(medicalHistory.getVaccinationHistory());
 
             medicalHistoryRepository.save(existingEntity);
@@ -59,7 +63,18 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
             return toDomain(entity);
         }else{
             return null;
+        } 
+    }
+    @Override 
+    public List<MedicalHistory> findByPetId(long petId){
+        List<MedicalHistoryEntity> entities = medicalHistoryRepository.findByPetId(petId);
+        List<MedicalHistory> medicalHistories = new ArrayList<>();
+        if (entities!= null){
+            for (MedicalHistoryEntity entity : entities){
+                medicalHistories.add(toDomain(entity));
+            }
         }
+        return medicalHistories;
     }
     private MedicalHistory toDomain(MedicalHistoryEntity entity){
         MedicalHistory medicalHistory = new MedicalHistory();
@@ -73,7 +88,7 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
         medicalHistory.setDateilprocedure(entity.getDetailProcedure());
         medicalHistory.setMedicationsAllergic(entity.getMedicationAllergic());
         medicalHistory.setProcedures(entity.getProcedures());
-        medicalHistory.setMedicalOrder(entity.getMedicalOrder());
+        medicalHistory.setMedicalOrder(toDomain(entity.getMedicalOrder()));
         medicalHistory.setVaccinationHistory(entity.getVaccinationHistory());
 
         return medicalHistory;
@@ -89,10 +104,34 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
         entity.setDetailProcedure(medicalHistory.getDateilprocedure());
         entity.setMedicationAllergic(medicalHistory.getMedicationsAllergic());
         entity.setProcedures(medicalHistory.getProcedures());
-        entity.setMedicalOrder(medicalHistory.getMedicalOrder());
+        entity.setMedicalOrder(toEntity(medicalHistory.getMedicalOrder()));
         entity.setVaccinationHistory(medicalHistory.getVaccinationHistory());
 
         return entity;
     }
-    
+    private MedicalOrder toDomain(MedicalOrderEntity entity){
+        if (entity == null) return null;
+        return new MedicalOrder(
+            entity.getMedicalOrderId(),
+            entity.getPetId(),
+            entity.getOwnerId(),
+            entity.getVeterinarianId(),
+            entity.getMedication(),
+            entity.getEntryDate(),
+            entity.isCanceled());
+    }
+    private MedicalOrderEntity toEntity(MedicalOrder order){
+        if (order==null) return null;
+        MedicalOrderEntity entity = new MedicalOrderEntity();
+        entity.setCanceled(order.isCanceled());
+        entity.setEntryDate(order.getEntryDate());
+        entity.setMedicalOrderId(order.getMedicalOrderId());
+        entity.setMedication(order.getMedication());
+        entity.setOwnerId(order.getOwnerId());
+        entity.setVeterinarianId(order.getVeterinarianId());
+        entity.setPetId(order.getPetId());
+        return entity;
+    }
+
+
 }

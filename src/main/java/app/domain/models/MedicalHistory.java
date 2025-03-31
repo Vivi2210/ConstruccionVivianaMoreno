@@ -59,9 +59,9 @@ public class MedicalHistory {
         return procedures;
     }
 
-    public MedicalOrder getMedicalOrder() {
-        return medicalOrder;
-    }
+        public MedicalOrder getMedicalOrder() {
+            return medicalOrder;
+        }
 
     public List<String> getVaccinationHistory() {
         return vaccinationHistory;

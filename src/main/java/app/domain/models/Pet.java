@@ -19,6 +19,7 @@ public class Pet {
     private String size;
     private double weight;
 
+    
     public long getPetId() {
         return petId;
     }
@@ -90,7 +91,8 @@ public class Pet {
     public void setWeight(double weight) {
         this.weight = weight;
     }
-    
 
+
+   
 
 }

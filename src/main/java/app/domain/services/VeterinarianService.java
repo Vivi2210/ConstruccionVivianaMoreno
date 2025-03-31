@@ -1,9 +1,8 @@
 package app.domain.services;
 
 import app.domain.models.MedicalHistory;
-<<<<<<< Updated upstream
-import app.ports.MedicalHistoryPort;
-=======
+
+
 import app.domain.models.MedicalOrder;
 import app.domain.models.Person;
 import app.domain.models.Pet;
@@ -12,7 +11,6 @@ import app.ports.MedicalOrderPort;
 import app.ports.PersonPort;
 import app.ports.PetPort;
 
->>>>>>> Stashed changes
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +27,6 @@ public class VeterinarianService {
     @Autowired
     private MedicalHistoryPort medicalHistoryPort;
 
-<<<<<<< Updated upstream
-=======
     @Autowired
     private PetPort petPort;
     @Autowired
@@ -51,7 +47,7 @@ public class VeterinarianService {
         personPort.savePerson(owner);
     }
 
->>>>>>> Stashed changes
+
     public void createMedicalHistory(MedicalHistory medicalHistory) throws Exception {
         if (medicalHistory == null) {
             throw new Exception("El historial médico no puede ser nulo.");
@@ -94,5 +90,14 @@ public class VeterinarianService {
         existingOrder.setCanceled(true); 
         medicalOrderPort.save(existingOrder);
     }
+    public MedicalOrder getMedicalOrderById(long medicalOrderId) throws Exception {
+    MedicalOrder order = medicalOrderPort.findById(medicalOrderId);
+    
+    if (order == null) {
+        throw new Exception("No se encontró una orden médica con el ID: " + medicalOrderId);
+    }
+    return order;
+}
+
 }
 

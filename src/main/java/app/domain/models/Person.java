@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
+
 public class Person {
     
     private long document;
@@ -51,6 +52,11 @@ public class Person {
         this.name = name;
         this.role = role;
         this.age = age;
+    }
+    public Person(long document, String name, String role){
+        this.document= document;
+        this.name = name;
+        this.role = role;
     }
     
     public Person(){}

@@ -26,7 +26,7 @@ public class MedicalOrderEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="medical_order:id")
+    @Column(name="medical_order_id")
     private Long medicalOrderId;
     
     @Column(name="pet_id")
@@ -38,7 +38,10 @@ public class MedicalOrderEntity {
     @Column(name="veterinarian_id")
     private long veterinarianId;
     
-    @Column(name="medication")
+    @Column (name="medicaction")
+    private String medication;
+    
+    @Column(name="entryDate")
     private Date entryDate;
     
     @Column(name="canceled")
@@ -76,6 +79,14 @@ public class MedicalOrderEntity {
         this.veterinarianId = veterinarianId;
     }
 
+    public String getMedication() {
+        return medication;
+    }
+
+    public void setMedication(String medication) {
+        this.medication = medication;
+    }
+
     public Date getEntryDate() {
         return entryDate;
     }
@@ -91,6 +102,7 @@ public class MedicalOrderEntity {
     public void setCanceled(boolean canceled) {
         this.canceled = canceled;
     }
+
     
     
 }
