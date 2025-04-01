@@ -21,10 +21,10 @@ public class LoginService {
     public User login(User user) throws Exception {
         User userValidate = userPort.findByUserName(user.getUserName());
         if (userValidate == null) {
-            throw new Exception("Usuario o contraseña incorrectos.");
+            throw new Exception("Usuario  incorrectos.");
         }
         if(!user.getPassword().equals(userValidate.getPassword())){
-            throw new Exception("Usuario o contraseña invalido");
+            throw new Exception("contraseña invalido");
         }
         return userValidate;
     }   

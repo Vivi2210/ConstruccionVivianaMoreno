@@ -90,7 +90,7 @@ public class UserAdapter implements UserPort {
         user.setRole(userEntity.getRole());
         
         if (userEntity.getPerson()!= null){
-        Person person = toDomain(userEntity.getPerson());
+        Person person = (userEntity.getPerson());
         user.setDocument(person.getDocument());
         user.setName(person.getName());
         user.setAge(person.getAge());

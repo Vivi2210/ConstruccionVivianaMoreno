@@ -1,6 +1,8 @@
 package app.domain.models;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,10 +10,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
+@Entity
 
 public class MedicalOrder {
     
+    @Id
     private long medicalOrderId;
     private long petId;
     private long ownerId;

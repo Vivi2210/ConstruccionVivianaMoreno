@@ -1,6 +1,6 @@
 package app.adapters.users.entity;
 
-import app.adapters.persons.entity.PersonEntity;
+import app.domain.models.Person;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +26,7 @@ public class UserEntity {
     
     @JoinColumn(name = "person_id", referencedColumnName ="id")
     @OneToOne
-    private PersonEntity person;
+    private Person person;
 
     
     @Column(name = "username")
@@ -46,11 +46,11 @@ public class UserEntity {
         this.userId = userId;
     }
 
-    public PersonEntity getPerson() {
+    public Person getPerson() {
         return person;
     }
 
-    public void setPerson(PersonEntity person) {
+    public void setPerson(Person person) {
         this.person = person;
     }
 

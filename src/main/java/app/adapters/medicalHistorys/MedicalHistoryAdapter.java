@@ -50,7 +50,7 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
             existingEntity.setDetailProcedure(medicalHistory.getDateilprocedure());
             existingEntity.setMedicationAllergic(medicalHistory.getMedicationsAllergic());
             existingEntity.setProcedures(medicalHistory.getProcedures());
-            existingEntity.setMedicalOrder(toEntity(medicalHistory.getMedicalOrder()));
+            existingEntity.setMedicalOrder(medicalHistory.getMedicalOrder());
             existingEntity.setVaccinationHistory(medicalHistory.getVaccinationHistory());
 
             medicalHistoryRepository.save(existingEntity);
@@ -88,7 +88,7 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
         medicalHistory.setDateilprocedure(entity.getDetailProcedure());
         medicalHistory.setMedicationsAllergic(entity.getMedicationAllergic());
         medicalHistory.setProcedures(entity.getProcedures());
-        medicalHistory.setMedicalOrder(toDomain(entity.getMedicalOrder()));
+        medicalHistory.setMedicalOrder(entity.getMedicalOrder());
         medicalHistory.setVaccinationHistory(entity.getVaccinationHistory());
 
         return medicalHistory;
@@ -104,7 +104,7 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
         entity.setDetailProcedure(medicalHistory.getDateilprocedure());
         entity.setMedicationAllergic(medicalHistory.getMedicationsAllergic());
         entity.setProcedures(medicalHistory.getProcedures());
-        entity.setMedicalOrder(toEntity(medicalHistory.getMedicalOrder()));
+        entity.setMedicalOrder(medicalHistory.getMedicalOrder());
         entity.setVaccinationHistory(medicalHistory.getVaccinationHistory());
 
         return entity;

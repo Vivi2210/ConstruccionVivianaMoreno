@@ -15,7 +15,7 @@ public class PetEntity {
     private long petId;
     @Column(name= "name")
     private String name;
-    @Column(name = "ownerDocument")
+    @Column(name = "owner_document")
     private long ownerDocument;
     @Column(name = "species")
     private String species;

@@ -41,7 +41,7 @@ public class MedicalOrderEntity {
     @Column (name="medicaction")
     private String medication;
     
-    @Column(name="entryDate")
+    @Column(name="entry_date")
     private Date entryDate;
     
     @Column(name="canceled")

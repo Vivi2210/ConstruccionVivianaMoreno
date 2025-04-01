@@ -40,7 +40,7 @@ public class MedicalHistoryEntity {
     @Column(name="medical_history_id")
     private Long medicalHistoryId;
     
-    @Column(name="registratio_date")
+    @Column(name="registration_date")
     private Date registrationDate;
     
     @Column(name="veterinary_doctor")
@@ -57,12 +57,12 @@ public class MedicalHistoryEntity {
     
     @ElementCollection
     @CollectionTable(name="medical_procedures", joinColumns= @JoinColumn(name="medical_history_id"))
-    @Column(name="procedure")
+    @Column(name="procedures")
     private List<String> procedures;
     
    @OneToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name="medical_order_id", referencedColumnName = "id")
-   private MedicalOrderEntity medicalOrder;
+   @JoinColumn(name="medical_order_id", referencedColumnName = "medical_order_id")
+   private MedicalOrder medicalOrder;
    
    @ElementCollection
    @CollectionTable(name="vaccination_history", joinColumns = @JoinColumn(name="medical_history_id"))
@@ -108,11 +108,11 @@ public class MedicalHistoryEntity {
         return procedures;
     }
 
-    public MedicalOrderEntity getMedicalOrder() {
+    public MedicalOrder getMedicalOrder() {
         return medicalOrder;
     }
 
-    public void setMedicalOrder(MedicalOrderEntity medicalOrder) {
+    public void setMedicalOrder(MedicalOrder medicalOrder) {
         this.medicalOrder = medicalOrder;
     }
 
