@@ -26,22 +26,22 @@ public class MedicalOrderEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="medical_order_id")
+    @Column(name="medical_id")
     private Long medicalOrderId;
     
-    @Column(name="pet_id")
+    @Column(name="id_pet")
     private long petId;
     
-    @Column(name="owner_id")
+    @Column(name="owner_document")
     private long ownerId;
     
-    @Column(name="veterinarian_id")
+    @Column(name="veterinarian_document")
     private long veterinarianId;
     
     @Column (name="medicaction")
     private String medication;
     
-    @Column(name="entry_date")
+    @Column(name="entry_date_medical")
     private Date entryDate;
     
     @Column(name="canceled")

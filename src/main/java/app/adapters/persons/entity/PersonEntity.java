@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,10 +15,12 @@ import jakarta.persistence.Table;
 
 public class PersonEntity {
     @Id
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long personId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Column(name = "id_person") 
+    private Long id; 
+        
+    /*@Column(name = "id_person")
+    private long personId;*/
     @Column(name="document")
     private long document;
     @Column (name= "name")
@@ -25,6 +29,7 @@ public class PersonEntity {
     private String role;
     @Column(name = "age")
     private int age;
+
 
 
     public long getDocument() {
@@ -58,14 +63,24 @@ public class PersonEntity {
     public void setAge(int age) {
         this.age = age;
     }
+    
+    
 
 
-    public long getPersonId() {
+    /*public long getPersonId() {
         return personId;
     }
 
     public void setPersonId(long personId) {
         this.personId = personId;
+    }*/
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 

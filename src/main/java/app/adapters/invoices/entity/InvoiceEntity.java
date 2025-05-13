@@ -1,7 +1,7 @@
 
 package app.adapters.invoices.entity;
 
-import app.domain.models.Invoice;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import jakarta.persistence.Entity;
@@ -18,7 +18,7 @@ public class InvoiceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "invoice_id")
     private long invoiceId;
-    @Column (name="pet_id")
+    @Column (name="id_pet")
     private long petId;
     @Column (name = "owner_document")
     private long ownerDocument;
@@ -26,7 +26,7 @@ public class InvoiceEntity {
     private String productName;
     @Column (name = "invoice_date")
     private Date invoiceDate;
-    @Column (name = "medical_order_id")
+    @Column (name = "medical_order_ffk")
     private long medicalOrderId;
     @Column (name="price")
     private double price;

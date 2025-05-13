@@ -80,24 +80,27 @@ public class UserAdapter implements UserPort {
     }
 
     private User toDomain(UserEntity userEntity) {
-        if (userEntity == null) {
-            return null;
-        }
-
-        User user = new User();
-        user.setUserName(userEntity.getUserName());
-        user.setPassword(userEntity.getPassword());
-        user.setRole(userEntity.getRole());
-        
-        if (userEntity.getPerson()!= null){
-        Person person = (userEntity.getPerson());
-        user.setDocument(person.getDocument());
-        user.setName(person.getName());
-        user.setAge(person.getAge());
-        user.setRole(person.getRole());
-        }
-        return user;
+    if (userEntity == null) {
+        return null;
     }
+
+    User user = new User();
+    user.setUserName(userEntity.getUserName());
+    user.setPassword(userEntity.getPassword());
+    user.setRole(userEntity.getRole());  // Este es el rol del usuario (puedes omitirlo si lo sacas del PersonEntity)
+
+    PersonEntity personEntity = userEntity.getPerson();
+    if (personEntity != null) {
+        // Puedes hacer esto directamente si 'User' solo guarda esos datos personales
+        user.setDocument(personEntity.getDocument());
+        user.setName(personEntity.getName());
+        user.setAge(personEntity.getAge());
+        user.setRole(personEntity.getRole()); // Solo si el rol viene del Person
+    }
+
+    return user;
+    }
+
 
     private UserEntity toEntity(User user) {
         if (user == null) {

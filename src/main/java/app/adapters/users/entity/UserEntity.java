@@ -1,5 +1,6 @@
 package app.adapters.users.entity;
 
+import app.adapters.persons.entity.PersonEntity;
 import app.domain.models.Person;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,9 +25,9 @@ public class UserEntity {
     @Column(name = "user_id")
     private long userId;
     
-    @JoinColumn(name = "person_id", referencedColumnName ="id")
+    @JoinColumn(name = "person_id", referencedColumnName ="id_person")
     @OneToOne
-    private Person person;
+    private PersonEntity person;
 
     
     @Column(name = "username")
@@ -46,13 +47,14 @@ public class UserEntity {
         this.userId = userId;
     }
 
-    public Person getPerson() {
+    public PersonEntity getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(PersonEntity person) {
         this.person = person;
     }
+
 
     public String getUserName() {
         return userName;

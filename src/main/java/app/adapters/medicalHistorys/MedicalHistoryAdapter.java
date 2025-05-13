@@ -47,11 +47,12 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
             existingEntity.setSymptomatology(medicalHistory.getSymptomatology());
             existingEntity.setDiagnosis(medicalHistory.getDiagnosis());
             existingEntity.setCancellationOrder(medicalHistory.getCancellationOrder());
-            existingEntity.setDetailProcedure(medicalHistory.getDateilprocedure());
-            existingEntity.setMedicationAllergic(medicalHistory.getMedicationsAllergic());
+            /*existingEntity.setDetailProcedure(medicalHistory.getDateilprocedure());
+
+            /*existingEntity.setMedicationAllergic(medicalHistory.getMedicationsAllergic());
             existingEntity.setProcedures(medicalHistory.getProcedures());
             existingEntity.setMedicalOrder(medicalHistory.getMedicalOrder());
-            existingEntity.setVaccinationHistory(medicalHistory.getVaccinationHistory());
+            existingEntity.setVaccinationHistory(medicalHistory.getVaccinationHistory());*/
 
             medicalHistoryRepository.save(existingEntity);
         }
@@ -67,7 +68,7 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
     }
     @Override 
     public List<MedicalHistory> findByPetId(long petId){
-        List<MedicalHistoryEntity> entities = medicalHistoryRepository.findByPetId(petId);
+        List<MedicalHistoryEntity> entities = medicalHistoryRepository.findByPet_PetId(petId);
         List<MedicalHistory> medicalHistories = new ArrayList<>();
         if (entities!= null){
             for (MedicalHistoryEntity entity : entities){
@@ -84,12 +85,12 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
         medicalHistory.setReasonConsultation(entity.getReasonConsultation());
         medicalHistory.setSymptomatology(entity.getSymptomatology());
         medicalHistory.setDiagnosis(entity.getDiagnosis());
-        medicalHistory.setCancellationOrder(entity.getCancellationOrder());
+        medicalHistory.setCancellationOrder(entity.isCancellationOrder());
         medicalHistory.setDateilprocedure(entity.getDetailProcedure());
-        medicalHistory.setMedicationsAllergic(entity.getMedicationAllergic());
+        /*medicalHistory.setMedicationsAllergic(entity.getMedicationAllergic());
         medicalHistory.setProcedures(entity.getProcedures());
         medicalHistory.setMedicalOrder(entity.getMedicalOrder());
-        medicalHistory.setVaccinationHistory(entity.getVaccinationHistory());
+        medicalHistory.setVaccinationHistory(entity.getVaccinationHistory());*/
 
         return medicalHistory;
     }
@@ -102,10 +103,10 @@ public class MedicalHistoryAdapter implements MedicalHistoryPort{
         entity.setDiagnosis(medicalHistory.getDiagnosis());
         entity.setCancellationOrder(medicalHistory.getCancellationOrder()); // Revisa el tipo aquí
         entity.setDetailProcedure(medicalHistory.getDateilprocedure());
-        entity.setMedicationAllergic(medicalHistory.getMedicationsAllergic());
+        /*entity.setMedicationAllergic(medicalHistory.getMedicationsAllergic());
         entity.setProcedures(medicalHistory.getProcedures());
         entity.setMedicalOrder(medicalHistory.getMedicalOrder());
-        entity.setVaccinationHistory(medicalHistory.getVaccinationHistory());
+        entity.setVaccinationHistory(medicalHistory.getVaccinationHistory());*/
 
         return entity;
     }

@@ -2,16 +2,18 @@
 package app.adapters.pets.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+@Entity
 @Table(name="pet")
 public class PetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="pet_id")
+    @Column(name ="id")
     private long petId;
     @Column(name= "name")
     private String name;
