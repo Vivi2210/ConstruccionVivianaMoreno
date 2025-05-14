@@ -4,6 +4,7 @@
  */
 package app.adapters.inputs.utils;
 
+import app.Exceptions.InputsException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ public class SimpleValidator {
     
     public String stringValidator(String value, String element) throws Exception{
         if (value == null || value.trim().isEmpty()){
-            throw new Exception(element + "no hay un valor valido");
+            throw new InputsException(element + "no hay un valor valido");
         }
         return value;
     }
@@ -22,14 +23,14 @@ public class SimpleValidator {
         try {
             return Long.parseLong(stringValidator(value, element));
         } catch (NumberFormatException e){
-            throw new Exception(element + "ingresa un numero valido");
+            throw new InputsException(element + "ingresa un numero valido");
         }
     }
     public double doubleValidator(String value, String element) throws Exception{
         try{
             return Double.parseDouble(stringValidator(value, element));
         } catch (NumberFormatException e){
-            throw new Exception(element + "ingresa el numero decimal valido");
+            throw new InputsException(element + "ingresa el numero decimal valido");
         }
     }
     public String dateFormatValidator(String value, String element) throws Exception{ 
@@ -39,14 +40,14 @@ public class SimpleValidator {
             dateFormat.parse(value);
             return value;
         } catch(ParseException e){
-            throw new Exception(element + "formado debe ser año-mes-dia");
+            throw new InputsException(element + "formado debe ser año-mes-dia");
         }
     }
     public Integer integerValidator(String value, String element) throws Exception{
         try{
             return Integer.parseInt(stringValidator(value, element));
         }catch (NumberFormatException e){
-            throw new Exception(element + "debe ser un numero entero");
+            throw new InputsException(element + "debe ser un numero entero");
         }
     }
 }

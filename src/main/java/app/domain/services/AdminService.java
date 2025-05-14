@@ -1,6 +1,7 @@
 
 package app.domain.services;
 
+import app.Exceptions.BusinessException;
 import app.ports.UserPort;
 import app.domain.models.User;
 import app.ports.PersonPort;
@@ -48,7 +49,7 @@ public class AdminService {
     }
     public void registerVeterinarian(User veterinarian) throws Exception{
         if(personPort.existPerson(veterinarian.getDocument())){
-            throw new Exception("numero de ceula ya en uso, revisa la informacion");
+            throw new BusinessException("numero de ceula ya en uso, revisa la informacion");
         }
         if (userPort.existUserName(veterinarian.getUserName())){
             throw new Exception("nombre de usuario ya en uso");
