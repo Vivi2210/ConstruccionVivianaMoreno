@@ -87,15 +87,15 @@ public class UserAdapter implements UserPort {
     User user = new User();
     user.setUserName(userEntity.getUserName());
     user.setPassword(userEntity.getPassword());
-    user.setRole(userEntity.getRole());  // Este es el rol del usuario (puedes omitirlo si lo sacas del PersonEntity)
+    user.setRole(userEntity.getRole());  
 
     PersonEntity personEntity = userEntity.getPerson();
     if (personEntity != null) {
-        // Puedes hacer esto directamente si 'User' solo guarda esos datos personales
+        
         user.setDocument(personEntity.getDocument());
         user.setName(personEntity.getName());
         user.setAge(personEntity.getAge());
-        user.setRole(personEntity.getRole()); // Solo si el rol viene del Person
+        user.setRole(personEntity.getRole()); 
     }
 
     return user;
@@ -103,17 +103,28 @@ public class UserAdapter implements UserPort {
 
 
     private UserEntity toEntity(User user) {
-        if (user == null) {
-            return null;
-        }
-
-        UserEntity userEntity = new UserEntity();
-        userEntity.setUserName(user.getUserName());
-        userEntity.setPassword(user.getPassword());
-        userEntity.setRole(user.getRole());
-
-        return userEntity;
+    if (user == null) {
+        return null;
     }
+
+    UserEntity userEntity = new UserEntity();
+    userEntity.setUserName(user.getUserName());
+    userEntity.setPassword(user.getPassword());
+    userEntity.setRole(user.getRole());
+
+
+    Person person = new Person();
+    person.setDocument(user.getDocument());
+    person.setName(user.getName());
+    person.setAge(user.getAge());
+    person.setRole(user.getRole()); 
+
+    PersonEntity personEntity = toEntity(person);
+    userEntity.setPerson(personEntity);
+
+    return userEntity;
+    }
+
 
     private Person toDomain(PersonEntity personEntity) {
         if (personEntity == null) {

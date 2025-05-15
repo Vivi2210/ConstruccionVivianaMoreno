@@ -43,6 +43,7 @@ public class PersonAdapter implements PersonPort {
         person.setDocument(person.getDocument());
         person.setName(person.getName());
         person.setRole(person.getRole());
+        person.setId(person.getId());
         return person;
     }
     
@@ -52,6 +53,7 @@ public class PersonAdapter implements PersonPort {
         personEntity.setAge(person.getAge());
         personEntity.setName(person.getName());
         personEntity.setRole(person.getRole());
+        personEntity.setId(person.getId());
         return personEntity;
     }
 }

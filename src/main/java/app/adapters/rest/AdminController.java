@@ -85,14 +85,7 @@ public class AdminController {
         veterinarian.setPassword(userValidator.passwordValidator(request.getPassword()));
         veterinarian.setUserName(userValidator.userNameValidator(request.getUserName()));
         adminservice.registerVeterinarian(veterinarian);
-        /*User user = new User();
-        user.setName(request.getName());
-        user.setDocument(request.getDocument());
-        user.setPassword(request.getPassword());
-        user.setUserName(request.getUserName());
-        user.setAge(request.getAge());
-        User veterinatian = null;
-        adminservice.registerVeterinarian(veterinatian);*/
+
         return  new ResponseEntity ("Se ha registrado el vendedor", HttpStatus.OK);
         
         }catch(BusinessException be){

@@ -45,4 +45,11 @@ public class User extends Person {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "userName=" + userName + ", password=" + password + '}' + super.toString();
+    }
+    
+    
+
 }

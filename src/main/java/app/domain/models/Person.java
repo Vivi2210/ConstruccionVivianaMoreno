@@ -14,7 +14,17 @@ public class Person {
     private String name;
     private String role;
     private int age;
+    private long id;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
+    
     public long getDocument() {
         return document;
     }
@@ -60,6 +70,11 @@ public class Person {
     }
     
     public Person(){}
+
+    @Override
+    public String toString() {
+        return "Person{" + "document=" + document + ", name=" + name + ", role=" + role + ", age=" + age + '}';
+    }
 
    
     
